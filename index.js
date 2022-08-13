@@ -1,8 +1,7 @@
 #!/usr/bin/env node
 
-import { welcome } from "./src/greetings.mjs";
-
-import questions from "./src/trivialQuestions.mjs";
+import { welcome } from "./config/greetings.mjs";
+// import questions from "./config/trivialQuestions.mjs";
 import figlet from "figlet";
 import gradient from "gradient-string";
 import inquirer from "inquirer";
@@ -17,24 +16,11 @@ async function askName(){
         name: "player_name",
         message: "What is your name?",
         default(){
-            return `player`;
+            return `Senior Comrade`;
         },
     });
     playerName = answers.player_name; // answers.player_name
 }
-
-
-const amount = async () => {
-    const answers = await inquirer.prompt({
-      type: "input",
-      name: "amount",
-      message: "State the number of questions you want to answer",
-      default(){
-        return 10
-      }
-    });
-    console.log(answers.amount);
-  };  
 
 
 async function winner() {
@@ -47,8 +33,6 @@ async function winner() {
 }
 
 
-
-await amount();
 // await welcome(); //top level await
 // await askName();
 // await questions();
