@@ -1,11 +1,10 @@
 import { createSpinner } from "nanospinner";
 
-const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
-// import playerName from "./intro.mjs";
+const rest = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 
 export async function handleAnswer(isCorrect) {
     const spinner = createSpinner("checking answer....").start();
-    await sleep();
+    await rest();
   
     if (isCorrect) {
       spinner.success({

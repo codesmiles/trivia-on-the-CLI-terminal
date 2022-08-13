@@ -1,6 +1,6 @@
 import inquirer from "inquirer";
-import { handleAnswer } from "./answerCheck.mjs";
-import axios from "axios";
+// import { handleAnswer } from "./answerCheck.mjs";
+
 
 let difficultyAns, amountAns;
 
@@ -14,7 +14,7 @@ const difficulty = async () => {
   return (difficultyAns = answers.difficulty);
 };
 
-// await difficulty();
+await difficulty();
 
 const amount = async () => {
   const answers = await inquirer.prompt({
@@ -28,39 +28,20 @@ const amount = async () => {
   });
   return (amountAns = answers.amount);
 };
-// await amount();
-
-// axios
-//   .get(
-//     `https://the-trivia-api.com/api/questions?categories=general_knowledge&limit=${amountAns}&region=NG&difficulty=${difficultyAns}`
-//   )
-//   .then((res) => {
-//     const options = [].sort((a,b)=>0.5 - Math.random());
+await amount();
 
 
-//     res.data.map((opt) => {      
-//       options.push(opt.correctAnswer, ...opt.incorrectAnswers)
+export {difficultyAns, amountAns};
 
-//       const questionire = async () => {
-//         const answers = await inquirer.prompt({
-//           //suppose to have a variable name of answers
-//           type: "list",
-//           name: "Question_1",
-//           message: opt.question,
-//           choices: options,
-//         });
-//         return handleAnswer(answers.Question_1 === opt.correctAnswer),options.splice(0,options.length);
-//       };
-      
-//       // ans.incorrectAnswers
-//       // ans.correctAnswer
-//       // ans.question
-//     });
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
+// async function getAns (question,correctAnswer,...options){
+// let answers = await inquirer.prompt({
+//   //suppose to have a variable name of answers
+//   type: "list",
+//   name: `current_question`, //observe
+//   message: question,
+//   choices:[].push(options),
+// });
+// return handleAnswer(answers.current_question === correctAnswer);
+// }
 
-// export default questions;
-
-
+        // return options.splice(0, options.length) // to empty an array
