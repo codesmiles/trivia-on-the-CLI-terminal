@@ -33,15 +33,4 @@ await amount();
 
 export {difficultyAns, amountAns};
 
-// async function getAns (question,correctAnswer,...options){
-// let answers = await inquirer.prompt({
-//   //suppose to have a variable name of answers
-//   type: "list",
-//   name: `current_question`, //observe
-//   message: question,
-//   choices:[].push(options),
-// });
-// return handleAnswer(answers.current_question === correctAnswer);
-// }
 
-        // return options.splice(0, options.length) // to empty an array
