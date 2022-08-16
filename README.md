@@ -17,7 +17,7 @@ npm install
 ## Usage
 
 ```bash
-node trivia.js
+node trivia.js or npm run start
 ```
 
 ## Contributing
