@@ -10,11 +10,10 @@ import axios from "axios";
 import event from "events";
 // import events from "promise-events";
 
-
 const emitter = new event.EventEmitter();
-let playerName, difficultyAns, amountAns;;
+let playerName, difficultyAns, amountAns;
 
-// const sleep = (ms = 2000) => new Promise((r)=>setTimeout(r,ms));
+const sleep = (ms = 2000) => new Promise((r) => setTimeout(r, ms));
 
 async function askName() {
   const answers = await inquirer.prompt({
@@ -30,7 +29,6 @@ async function askName() {
 }
 await welcome(); //top level await
 await askName();
-
 
 const difficulty = async () => {
   const answers = await inquirer.prompt({
@@ -97,12 +95,20 @@ axios
           })
           .then((ans) => {
             handleAnswer(ans.current_question, valObj.correctAnswer);
-            
           })
           .catch((err) => console.log(err));
       });
 
       return emitter.emit("event", valObj), valObj.emptyOptionsArr();
+      //  while (options.length > 0) {
+      //   emitter.emit("event", valObj);
+      //   valObj.emptyOptionsArr();
+      //   if (options.length !== 0) {
+      //     sleep(100000);
+      //     valObj.emptyOptionsArr();
+
+      // }
+      // }
     }
   })
   .catch((err) => {
@@ -118,6 +124,14 @@ async function winner() {
   });
 }
 
+async function loser() {
+  console.clear();
+  const msg = `pele ${playerName}`;
 
+  figlet(msg, (err, data) => {
+    console.log(gradient.pastel.multiline(data));
+  });
+}
 
 // await winner();
+// await loser();
