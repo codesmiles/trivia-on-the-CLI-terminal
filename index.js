@@ -97,6 +97,7 @@ axios
           })
           .then((ans) => {
             handleAnswer(ans.current_question, valObj.correctAnswer);
+            
           })
           .catch((err) => console.log(err));
       });
